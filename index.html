@@ -63,6 +63,14 @@
             display: none;
             margin-top: 20px;
         }
+        .pix-code {
+            background: #333;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -76,8 +84,9 @@
         </form>
         <div class="payment-options" id="paymentOptions">
             <h2>Escolha a forma de pagamento</h2>
-            <p>PIX</p>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/QR_code_for_mobile_English_Wikipedia.svg/200px-QR_code_for_mobile_English_Wikipedia.svg.png" alt="QR Code PIX" width="150">
+            <p>PIX - QR Code Temporariamente Indisponível</p>
+            <p class="pix-code" id="pixCode">santacruzrpofc@gmail.com</p>
+            <button onclick="copyPixCode()">Copiar Código PIX</button>
         </div>
     </div>
     
@@ -102,6 +111,13 @@
             if (value.length > 7) value = value.replace(/(\+\d{2}\s\d{5})(\d)/, "$1-$2");
             e.target.value = value;
         });
+
+        function copyPixCode() {
+            const pixCode = document.getElementById("pixCode").innerText;
+            navigator.clipboard.writeText(pixCode).then(() => {
+                alert("Código PIX copiado!");
+            });
+        }
     </script>
 </body>
 </html>

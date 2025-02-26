@@ -1,123 +1,235 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIP FiveM - Compra Segura</title>
-    <link rel="icon" href="https://raw.githubusercontent.com/ghostttk/santa-cruz/refs/heads/main/logo.png" type="image/png">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-        body {
-            background-color: #121212;
-            color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-        .container {
-            background: #1e1e1e;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            width: 90%;
-            max-width: 400px;
-        }
-        h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-        input, select {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 5px;
-            background: #333;
-            color: #fff;
-            font-size: 16px;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            margin-top: 20px;
-            border: none;
-            border-radius: 5px;
-            background: #00c853;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        button:hover {
-            background: #00e676;
-        }
-        .payment-options {
-            display: none;
-            margin-top: 20px;
-        }
-        .pix-code {
-            background: #333;
-            padding: 10px;
-            border-radius: 5px;
-            display: inline-block;
-            margin-top: 10px;
-            cursor: pointer;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Painel de VIPs</title>
+  <!-- Favicon (opcional) -->
+  <link rel="icon" href="https://raw.githubusercontent.com/ghostttk/santa-cruz/refs/heads/main/logo.png" type="image/png">
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #1a1a1a; /* Fundo geral escuro */
+      font-family: Arial, sans-serif;
+      color: #fff;
+    }
+
+    /* Container principal: sidebar + main */
+    .container {
+      display: flex;
+      min-height: 100vh; /* Ocupar altura toda da tela */
+    }
+
+    /* === SIDEBAR === */
+    .sidebar {
+      width: 250px;
+      background-color: #2a2a2a;
+      border-right: 1px solid #333;
+      padding: 20px;
+    }
+    .sidebar h2 {
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
+    .sidebar ul {
+      list-style: none;
+    }
+    .sidebar li {
+      margin: 8px 0;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+    .sidebar li:hover {
+      background-color: #333;
+    }
+
+    /* === MAIN CONTENT === */
+    .main-content {
+      flex: 1; /* Ocupar o restante da tela */
+      padding: 20px;
+    }
+    .main-content h1 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+    .main-content p {
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    /* Container que agrupa todos os cards de VIP */
+    .cards-container {
+      display: grid;
+      gap: 20px;
+      /* Ajusta quantidade de colunas conforme espaço de tela */
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      align-items: start;
+    }
+
+    /* === CARD VIP === */
+    .card {
+      background-color: #2a2a2a;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Medalha ou ícone */
+    .card img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+
+    .card h2 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #ffa726; /* Destaque para o nome do VIP */
+    }
+    .card p.price {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    /* Botão de ação */
+    .card button {
+      background: #ff6d00;
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 10px 15px;
+      transition: background 0.3s;
+    }
+    .card button:hover {
+      background: #ff8f00;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Compra de VIP - FiveM</h1>
-        <form id="vipForm">
-            <input type="email" id="email" placeholder="Digite seu e-mail" required>
-            <input type="text" id="cpf" placeholder="Digite seu CPF" required>
-            <input type="tel" id="telefone" placeholder="Digite seu telefone" required>
-            <button type="submit">Continuar</button>
-        </form>
-        <div class="payment-options" id="paymentOptions">
-            <h2>Escolha a forma de pagamento</h2>
-            <p>PIX - QR Code Temporariamente Indisponível</p>
-            <p class="pix-code" id="pixCode">santacruzrpofc@gmail.com</p>
-            <button onclick="copyPixCode()">Copiar Código PIX</button>
+
+  <div class="container">
+    <!-- Menu Lateral (Categorias) -->
+    <nav class="sidebar">
+      <h2>Categorias</h2>
+      <ul>
+        <li>Essenciais</li>
+        <li>Diamantes</li>
+        <li>Armas</li>
+        <li>Carros Start</li>
+        <li>Blindados e Tiros</li>
+        <li>Fumóvel</li>
+        <li>Aeronaves</li>
+        <li>Especiais</li>
+        <li>Animais</li>
+        <li>Ferramentas</li>
+      </ul>
+    </nav>
+
+    <!-- Conteúdo Principal (VIPs) -->
+    <main class="main-content">
+      <h1>VIPs Disponíveis</h1>
+      <p>Selecione o VIP desejado e clique em “Assinar agora” para prosseguir.</p>
+
+      <div class="cards-container">
+        <!-- GaragemVip -->
+        <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/120px-Gold_medal_icon.svg.png" alt="GaragemVip">
+          <h2>GaragemVip</h2>
+          <p class="price">R$ 50</p>
+          <button>Assinar agora</button>
         </div>
-    </div>
-    
-    <script>
-        document.getElementById("vipForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            document.getElementById("vipForm").style.display = "none";
-            document.getElementById("paymentOptions").style.display = "block";
-        });
 
-        document.getElementById("cpf").addEventListener("input", function(e) {
-            let value = e.target.value.replace(/\D/g, "");
-            if (value.length > 3) value = value.replace(/(\d{3})(\d)/, "$1.$2");
-            if (value.length > 6) value = value.replace(/(\d{3})\.(\d{3})(\d)/, "$1.$2.$3");
-            if (value.length > 9) value = value.replace(/(\d{3})\.(\d{3})\.(\d{3})(\d)/, "$1.$2.$3-$4");
-            e.target.value = value;
-        });
+        <!-- Inicial -->
+        <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/120px-Gold_medal_icon.svg.png" alt="Inicial">
+          <h2>Inicial</h2>
+          <p class="price">R$ 40</p>
+          <button>Assinar agora</button>
+        </div>
 
-        document.getElementById("telefone").addEventListener("input", function(e) {
-            let value = e.target.value.replace(/\D/g, "");
-            if (value.length > 2) value = value.replace(/(\d{2})(\d)/, "+$1 $2");
-            if (value.length > 7) value = value.replace(/(\+\d{2}\s\d{5})(\d)/, "$1-$2");
-            e.target.value = value;
-        });
+        <!-- VipNatal -->
+        <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/120px-Gold_medal_icon.svg.png" alt="VipNatal">
+          <h2>VipNatal</h2>
+          <p class="price">R$ 70</p>
+          <button>Assinar agora</button>
+        </div>
 
-        function copyPixCode() {
-            const pixCode = document.getElementById("pixCode").innerText;
-            navigator.clipboard.writeText(pixCode).then(() => {
-                alert("Código PIX copiado!");
-            });
-        }
-    </script>
-</body>
-</html>
+        <!-- VipWipe -->
+        <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/120px-Gold_medal_icon.svg.png" alt="VipWipe">
+          <h2>VipWipe</h2>
+          <p class="price">R$ 45</p>
+          <button>Assinar agora</button>
+        </div>
+
+        <!-- VipBronze -->
+        <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/120px-Gold_medal_icon.svg.png" alt="VipBronze">
+          <h2>VipBronze</h2>
+          <p class="price">R$ 60</p>
+          <button>Assinar agora</button>
+        </div>
+
+        <!-- VipPrata -->
+        <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/120px-Gold_medal_icon.svg.png" alt="VipPrata">
+          <h2>VipPrata</h2>
+          <p class="price">R$ 70</p>
+          <button>Assinar agora</button>
+        </div>
+
+        <!-- VipOuro -->
+        <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/120px-Gold_medal_icon.svg.png" alt="VipOuro">
+          <h2>VipOuro</h2>
+          <p class="price">R$ 80</p>
+          <button>Assinar agora</button>
+        </div>
+
+        <!-- VipPlatina -->
+        <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/120px-Gold_medal_icon.svg.png" alt="VipPlatina">
+          <h2>VipPlatina</h2>
+          <p class="price">R$ 90</p>
+          <button>Assinar agora</button>
+        </div>
+
+        <!-- VipDiamante -->
+        <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/120px-Gold_medal_icon.svg.png" alt="VipDiamante">
+          <h2>VipDiamante</h2>
+          <p class="price">R$ 100</p>
+          <button>Assinar agora</button>
+        </div>
+
+        <!-- VipBlack -->
+        <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/120px-Gold_medal_icon.svg.png" alt="VipBlack">
+          <h2>VipBlack</h2>
+          <p class="price">R$ 120</p>
+          <button>Assinar agora</button>
+        </div>
+
+        <!-- VipSupremoBlack -->
+        <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/120px-Gold_medal_icon.svg.png" alt="VipSupremoBlack">
+          <h2>VipSupremoBlack</h2>
+          <p class="price">R$ 130</p

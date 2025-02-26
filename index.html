@@ -6,6 +6,10 @@
   <title>Painel de VIPs</title>
   <!-- Favicon (opcional) -->
   <link rel="icon" href="https://raw.githubusercontent.com/ghostttk/santa-cruz/refs/heads/main/logo.png" type="image/png">
+  <!-- Fonte Google (exemplo) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+
   <style>
     /* RESET BÁSICO */
     * {
@@ -13,13 +17,16 @@
       padding: 0;
       box-sizing: border-box;
     }
+
+    /* Fonte global */
     body {
-      font-family: Arial, sans-serif;
-      background: #1c1c1c;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1c1c1c, #2a2a2a);
       color: #fff;
       min-height: 100vh;
-      display: flex; /* Para a sidebar e o conteúdo principal */
+      display: flex; /* Layout: sidebar + main */
     }
+
     /* SIDEBAR (barra lateral) */
     .sidebar {
       width: 250px;
@@ -30,6 +37,8 @@
     .sidebar h2 {
       font-size: 1.3rem;
       margin-bottom: 15px;
+      font-weight: 600;
+      color: #ffa726;
     }
     .sidebar ul {
       list-style: none;
@@ -49,18 +58,30 @@
     .main-content {
       flex: 1;
       padding: 20px;
-      overflow-y: auto; /* Caso tenha muito conteúdo, rola somente o main */
+      overflow-y: auto;
+      position: relative;
     }
     .main-content h1 {
       font-size: 2rem;
       margin-bottom: 10px;
+      color: #ffa726;
+      font-weight: 600;
     }
     .main-content p.subtitle {
       color: #ccc;
       margin-bottom: 20px;
     }
 
-    /* GRID DE CARDS */
+    /* TRANSIÇÃO FADE */
+    .fade {
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .fade.show {
+      opacity: 1;
+    }
+
+    /* GRID DE CARDS (quando exibimos VIP) */
     .cards-container {
       display: grid;
       gap: 20px;
@@ -89,6 +110,7 @@
     .card h2 {
       font-size: 1.1rem;
       margin-bottom: 10px;
+      font-weight: 600;
     }
     .card p.price {
       font-size: 1rem;
@@ -110,10 +132,18 @@
       background: #ff8f00;
     }
 
-    /* ROLAGEM E RESPONSIVIDADE */
+    /* INDISPONÍVEL NO MOMENTO */
+    .indisponivel {
+      font-size: 1.2rem;
+      color: #ccc;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    /* RESPONSIVIDADE */
     @media (max-width: 768px) {
       .sidebar {
-        display: none; /* Esconde a sidebar em telas muito pequenas, se desejar */
+        display: none; /* Esconde a sidebar em telas pequenas, se preferir */
       }
     }
   </style>
@@ -124,136 +154,169 @@
   <div class="sidebar">
     <h2>Categorias</h2>
     <ul>
-      <li>Essenciais</li>
-      <li>Diamantes</li>
-      <li>Addons</li>
-      <li>Salários</li>
-      <li>Armas</li>
-      <li>Carboost/Start</li>
-      <li>Veículos</li>
-      <li>Blindados & Tiros</li>
-      <li>Fumadas</li>
-      <li>Aeronaves</li>
-      <li>Espaciais</li>
-      <li>Genes Básicos</li>
-      <li>Supremos</li>
-      <li>Planos</li>
-      <!-- Você pode adicionar mais itens conforme necessidade -->
+      <li onclick="mostrarConteudo('Essenciais')">Essenciais</li>
+      <li onclick="mostrarConteudo('Diamantes')">Diamantes</li>
+      <li onclick="mostrarConteudo('Addons')">Addons</li>
+      <li onclick="mostrarConteudo('Salários')">Salários</li>
+      <li onclick="mostrarConteudo('Armas')">Armas</li>
+      <li onclick="mostrarConteudo('Carboost')">Carboost/Start</li>
+      <li onclick="mostrarConteudo('Veículos')">Veículos</li>
+      <li onclick="mostrarConteudo('Blindados')">Blindados & Tiros</li>
+      <li onclick="mostrarConteudo('Fumadas')">Fumadas</li>
+      <li onclick="mostrarConteudo('Aeronaves')">Aeronaves</li>
+      <li onclick="mostrarConteudo('Espaciais')">Espaciais</li>
+      <li onclick="mostrarConteudo('Genes')">Genes Básicos</li>
+      <li onclick="mostrarConteudo('Supremos')">Supremos</li>
+      <li onclick="mostrarConteudo('Planos VIP')">Planos VIP</li>
     </ul>
   </div>
 
   <!-- Conteúdo Principal -->
   <div class="main-content">
-    <h1>Painel de VIPs</h1>
-    <p class="subtitle">Selecione seu VIP e clique em “Assinar agora” para prosseguir</p>
-
-    <div class="cards-container">
-      <!-- GaragemVip -->
-      <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="GaragemVip">
-        <h2>GaragemVip</h2>
-        <p class="price">R$ 50</p>
-        <button>Assinar agora</button>
-      </div>
-      <!-- Inicial -->
-      <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="Inicial">
-        <h2>Inicial</h2>
-        <p class="price">R$ 40</p>
-        <button>Assinar agora</button>
-      </div>
-      <!-- VipNatal -->
-      <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipNatal">
-        <h2>VipNatal</h2>
-        <p class="price">R$ 70</p>
-        <button>Assinar agora</button>
-      </div>
-      <!-- VipWipe -->
-      <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipWipe">
-        <h2>VipWipe</h2>
-        <p class="price">R$ 45</p>
-        <button>Assinar agora</button>
-      </div>
-      <!-- VipBronze -->
-      <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipBronze">
-        <h2>VipBronze</h2>
-        <p class="price">R$ 60</p>
-        <button>Assinar agora</button>
-      </div>
-      <!-- VipPrata -->
-      <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipPrata">
-        <h2>VipPrata</h2>
-        <p class="price">R$ 70</p>
-        <button>Assinar agora</button>
-      </div>
-      <!-- VipOuro -->
-      <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipOuro">
-        <h2>VipOuro</h2>
-        <p class="price">R$ 80</p>
-        <button>Assinar agora</button>
-      </div>
-      <!-- VipPlatina -->
-      <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipPlatina">
-        <h2>VipPlatina</h2>
-        <p class="price">R$ 90</p>
-        <button>Assinar agora</button>
-      </div>
-      <!-- VipDiamante -->
-      <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipDiamante">
-        <h2>VipDiamante</h2>
-        <p class="price">R$ 100</p>
-        <button>Assinar agora</button>
-      </div>
-      <!-- VipBlack -->
-      <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipBlack">
-        <h2>VipBlack</h2>
-        <p class="price">R$ 120</p>
-        <button>Assinar agora</button>
-      </div>
-      <!-- VipSupremoBlack -->
-      <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipSupremoBlack">
-        <h2>VipSupremoBlack</h2>
-        <p class="price">R$ 130</p>
-        <button>Assinar agora</button>
-      </div>
-      <!-- VipMonster -->
-      <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipMonster">
-        <h2>VipMonster</h2>
-        <p class="price">R$ 140</p>
-        <button>Assinar agora</button>
-      </div>
-      <!-- VipGod -->
-      <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipGod">
-        <h2>VipGod</h2>
-        <p class="price">R$ 150</p>
-        <button>Assinar agora</button>
-      </div>
-      <!-- VipRubi -->
-      <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipRubi">
-        <h2>VipRubi</h2>
-        <p class="price">R$ 160</p>
-        <button>Assinar agora</button>
-      </div>
-      <!-- VipEsmeralda -->
-      <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipEsmeralda">
-        <h2>VipEsmeralda</h2>
-        <p class="price">R$ 200</p>
-        <button>Assinar agora</button>
-      </div>
+    <div id="conteudo" class="fade">
+      <!-- Aqui entra o conteúdo dinamicamente via JavaScript -->
+      <h1>Bem-vindo ao Painel</h1>
+      <p class="subtitle">Selecione uma categoria na barra lateral.</p>
     </div>
   </div>
+
+  <script>
+    // Conteúdo HTML do grid de VIP
+    const vipHTML = `
+      <h1>Planos VIP</h1>
+      <p class='subtitle'>Selecione seu VIP e clique em “Assinar agora” para prosseguir</p>
+      <div class='cards-container'>
+        <!-- GaragemVip -->
+        <div class='card'>
+          <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png' alt='GaragemVip'>
+          <h2>GaragemVip</h2>
+          <p class='price'>R$ 50</p>
+          <button>Assinar agora</button>
+        </div>
+        <!-- Inicial -->
+        <div class='card'>
+          <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png' alt='Inicial'>
+          <h2>Inicial</h2>
+          <p class='price'>R$ 40</p>
+          <button>Assinar agora</button>
+        </div>
+        <!-- VipNatal -->
+        <div class='card'>
+          <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png' alt='VipNatal'>
+          <h2>VipNatal</h2>
+          <p class='price'>R$ 70</p>
+          <button>Assinar agora</button>
+        </div>
+        <!-- VipWipe -->
+        <div class='card'>
+          <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png' alt='VipWipe'>
+          <h2>VipWipe</h2>
+          <p class='price'>R$ 45</p>
+          <button>Assinar agora</button>
+        </div>
+        <!-- VipBronze -->
+        <div class='card'>
+          <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png' alt='VipBronze'>
+          <h2>VipBronze</h2>
+          <p class='price'>R$ 60</p>
+          <button>Assinar agora</button>
+        </div>
+        <!-- VipPrata -->
+        <div class='card'>
+          <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png' alt='VipPrata'>
+          <h2>VipPrata</h2>
+          <p class='price'>R$ 70</p>
+          <button>Assinar agora</button>
+        </div>
+        <!-- VipOuro -->
+        <div class='card'>
+          <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png' alt='VipOuro'>
+          <h2>VipOuro</h2>
+          <p class='price'>R$ 80</p>
+          <button>Assinar agora</button>
+        </div>
+        <!-- VipPlatina -->
+        <div class='card'>
+          <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png' alt='VipPlatina'>
+          <h2>VipPlatina</h2>
+          <p class='price'>R$ 90</p>
+          <button>Assinar agora</button>
+        </div>
+        <!-- VipDiamante -->
+        <div class='card'>
+          <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png' alt='VipDiamante'>
+          <h2>VipDiamante</h2>
+          <p class='price'>R$ 100</p>
+          <button>Assinar agora</button>
+        </div>
+        <!-- VipBlack -->
+        <div class='card'>
+          <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png' alt='VipBlack'>
+          <h2>VipBlack</h2>
+          <p class='price'>R$ 120</p>
+          <button>Assinar agora</button>
+        </div>
+        <!-- VipSupremoBlack -->
+        <div class='card'>
+          <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png' alt='VipSupremoBlack'>
+          <h2>VipSupremoBlack</h2>
+          <p class='price'>R$ 130</p>
+          <button>Assinar agora</button>
+        </div>
+        <!-- VipMonster -->
+        <div class='card'>
+          <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png' alt='VipMonster'>
+          <h2>VipMonster</h2>
+          <p class='price'>R$ 140</p>
+          <button>Assinar agora</button>
+        </div>
+        <!-- VipGod -->
+        <div class='card'>
+          <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png' alt='VipGod'>
+          <h2>VipGod</h2>
+          <p class='price'>R$ 150</p>
+          <button>Assinar agora</button>
+        </div>
+        <!-- VipRubi -->
+        <div class='card'>
+          <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png' alt='VipRubi'>
+          <h2>VipRubi</h2>
+          <p class='price'>R$ 160</p>
+          <button>Assinar agora</button>
+        </div>
+        <!-- VipEsmeralda -->
+        <div class='card'>
+          <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png' alt='VipEsmeralda'>
+          <h2>VipEsmeralda</h2>
+          <p class='price'>R$ 200</p>
+          <button>Assinar agora</button>
+        </div>
+      </div>
+    `;
+
+    // Exibe mensagem de Indisponível
+    const indisponivelHTML = `
+      <h1>Ops...</h1>
+      <p class='indisponivel'>Esta categoria está indisponível no momento.</p>
+    `;
+
+    // Função para exibir conteúdo no container
+    function mostrarConteudo(categoria) {
+      const conteudoDiv = document.getElementById('conteudo');
+
+      // Remove classe .show para iniciar fade-out
+      conteudoDiv.classList.remove('show');
+
+      // Após um pequeno delay, trocamos o conteúdo e aplicamos fade-in
+      setTimeout(() => {
+        if (categoria === 'Planos VIP') {
+          conteudoDiv.innerHTML = vipHTML;
+        } else {
+          conteudoDiv.innerHTML = indisponivelHTML;
+        }
+        conteudoDiv.classList.add('show');
+      }, 400);
+    }
+  </script>
 </body>
 </html>

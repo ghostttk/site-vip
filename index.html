@@ -41,4 +41,219 @@
       cursor: pointer;
       transition: color 0.3s;
     }
-    .
+    .sidebar ul li:hover {
+      color: #fff;
+    }
+
+    /* CONTEÚDO PRINCIPAL */
+    .main-content {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto; /* Caso tenha muito conteúdo, rola somente o main */
+    }
+    .main-content h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    .main-content p.subtitle {
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    /* GRID DE CARDS */
+    .cards-container {
+      display: grid;
+      gap: 20px;
+      /* 4 colunas no desktop, ajusta automaticamente em telas menores */
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
+    /* CARD VIP */
+    .card {
+      background: #2c2c2c;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+    .card p.price {
+      font-size: 1rem;
+      margin-bottom: 15px;
+      color: #ffa726; /* Laranja pro preço */
+      font-weight: bold;
+    }
+    .card button {
+      background: #ff6d00;
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 10px 15px;
+      transition: background 0.3s;
+    }
+    .card button:hover {
+      background: #ff8f00;
+    }
+
+    /* ROLAGEM E RESPONSIVIDADE */
+    @media (max-width: 768px) {
+      .sidebar {
+        display: none; /* Esconde a sidebar em telas muito pequenas, se desejar */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra Lateral -->
+  <div class="sidebar">
+    <h2>Categorias</h2>
+    <ul>
+      <li>Essenciais</li>
+      <li>Diamantes</li>
+      <li>Addons</li>
+      <li>Salários</li>
+      <li>Armas</li>
+      <li>Carboost/Start</li>
+      <li>Veículos</li>
+      <li>Blindados & Tiros</li>
+      <li>Fumadas</li>
+      <li>Aeronaves</li>
+      <li>Espaciais</li>
+      <li>Genes Básicos</li>
+      <li>Supremos</li>
+      <li>Planos</li>
+      <!-- Você pode adicionar mais itens conforme necessidade -->
+    </ul>
+  </div>
+
+  <!-- Conteúdo Principal -->
+  <div class="main-content">
+    <h1>Painel de VIPs</h1>
+    <p class="subtitle">Selecione seu VIP e clique em “Assinar agora” para prosseguir</p>
+
+    <div class="cards-container">
+      <!-- GaragemVip -->
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="GaragemVip">
+        <h2>GaragemVip</h2>
+        <p class="price">R$ 50</p>
+        <button>Assinar agora</button>
+      </div>
+      <!-- Inicial -->
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="Inicial">
+        <h2>Inicial</h2>
+        <p class="price">R$ 40</p>
+        <button>Assinar agora</button>
+      </div>
+      <!-- VipNatal -->
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipNatal">
+        <h2>VipNatal</h2>
+        <p class="price">R$ 70</p>
+        <button>Assinar agora</button>
+      </div>
+      <!-- VipWipe -->
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipWipe">
+        <h2>VipWipe</h2>
+        <p class="price">R$ 45</p>
+        <button>Assinar agora</button>
+      </div>
+      <!-- VipBronze -->
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipBronze">
+        <h2>VipBronze</h2>
+        <p class="price">R$ 60</p>
+        <button>Assinar agora</button>
+      </div>
+      <!-- VipPrata -->
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipPrata">
+        <h2>VipPrata</h2>
+        <p class="price">R$ 70</p>
+        <button>Assinar agora</button>
+      </div>
+      <!-- VipOuro -->
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipOuro">
+        <h2>VipOuro</h2>
+        <p class="price">R$ 80</p>
+        <button>Assinar agora</button>
+      </div>
+      <!-- VipPlatina -->
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipPlatina">
+        <h2>VipPlatina</h2>
+        <p class="price">R$ 90</p>
+        <button>Assinar agora</button>
+      </div>
+      <!-- VipDiamante -->
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipDiamante">
+        <h2>VipDiamante</h2>
+        <p class="price">R$ 100</p>
+        <button>Assinar agora</button>
+      </div>
+      <!-- VipBlack -->
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipBlack">
+        <h2>VipBlack</h2>
+        <p class="price">R$ 120</p>
+        <button>Assinar agora</button>
+      </div>
+      <!-- VipSupremoBlack -->
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipSupremoBlack">
+        <h2>VipSupremoBlack</h2>
+        <p class="price">R$ 130</p>
+        <button>Assinar agora</button>
+      </div>
+      <!-- VipMonster -->
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipMonster">
+        <h2>VipMonster</h2>
+        <p class="price">R$ 140</p>
+        <button>Assinar agora</button>
+      </div>
+      <!-- VipGod -->
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipGod">
+        <h2>VipGod</h2>
+        <p class="price">R$ 150</p>
+        <button>Assinar agora</button>
+      </div>
+      <!-- VipRubi -->
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipRubi">
+        <h2>VipRubi</h2>
+        <p class="price">R$ 160</p>
+        <button>Assinar agora</button>
+      </div>
+      <!-- VipEsmeralda -->
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipEsmeralda">
+        <h2>VipEsmeralda</h2>
+        <p class="price">R$ 200</p>
+        <button>Assinar agora</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

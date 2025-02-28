@@ -67,14 +67,6 @@
       color: #ccc;
       margin-bottom: 20px;
     }
-    /* TRANSIÇÃO FADE */
-    .fade {
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-    .fade.show {
-      opacity: 1;
-    }
     /* GRID DE CARDS */
     .cards-container {
       display: grid;
@@ -123,13 +115,6 @@
     .card button:hover {
       background: #3399FF;
     }
-    /* INDISPONÍVEL NO MOMENTO */
-    .indisponivel {
-      font-size: 1.2rem;
-      color: #ccc;
-      text-align: center;
-      margin-top: 50px;
-    }
     /* MODAL POP-UP */
     .modal-overlay {
       position: fixed;
@@ -157,7 +142,6 @@
       text-align: center;
       max-width: 300px;
       width: 90%;
-      position: relative;
     }
     .modal h2 {
       margin-bottom: 20px;
@@ -196,7 +180,7 @@
       <button onclick="fecharModal()">Fechar</button>
     </div>
   </div>
-  
+
   <!-- Sidebar -->
   <div class="sidebar">
     <h2>Categorias</h2>
@@ -214,8 +198,7 @@
 
   <!-- Conteúdo Principal -->
   <div class="main-content">
-    <div id="conteudo" class="fade">
-      <!-- Exibe os VIPs diretamente -->
+    <div id="conteudo">
       <h1>Planos VIP</h1>
       <p class="subtitle">Selecione seu VIP e clique em “Assinar agora” para prosseguir</p>
       <div class="cards-container">
@@ -247,107 +230,57 @@
           <p class="price">R$ 45</p>
           <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
         </div>
-        <!-- VipBronze -->
-        <div class="card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipBronze">
-          <h2>VipBronze</h2>
-          <p class="price">R$ 60</p>
-          <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
-        </div>
-        <!-- VipPrata -->
-        <div class="card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipPrata">
-          <h2>VipPrata</h2>
-          <p class="price">R$ 70</p>
-          <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
-        </div>
-        <!-- VipOuro -->
-        <div class="card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipOuro">
-          <h2>VipOuro</h2>
-          <p class="price">R$ 80</p>
-          <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
-        </div>
-        <!-- VipPlatina -->
-        <div class="card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipPlatina">
-          <h2>VipPlatina</h2>
-          <p class="price">R$ 90</p>
-          <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
-        </div>
-        <!-- VipDiamante -->
-        <div class="card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipDiamante">
-          <h2>VipDiamante</h2>
-          <p class="price">R$ 100</p>
-          <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
-        </div>
-        <!-- VipBlack -->
-        <div class="card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipBlack">
-          <h2>VipBlack</h2>
-          <p class="price">R$ 120</p>
-          <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
-        </div>
-        <!-- VipSupremoBlack -->
-        <div class="card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipSupremoBlack">
-          <h2>VipSupremoBlack</h2>
-          <p class="price">R$ 130</p>
-          <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
-        </div>
-        <!-- VipMonster -->
-        <div class="card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipMonster">
-          <h2>VipMonster</h2>
-          <p class="price">R$ 140</p>
-          <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
-        </div>
-        <!-- VipGod -->
-        <div class="card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipGod">
-          <h2>VipGod</h2>
-          <p class="price">R$ 150</p>
-          <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
-        </div>
-        <!-- VipRubi -->
-        <div class="card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipRubi">
-          <h2>VipRubi</h2>
-          <p class="price">R$ 160</p>
-          <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
-        </div>
-        <!-- VipEsmeralda -->
-        <div class="card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipEsmeralda">
-          <h2>VipEsmeralda</h2>
-          <p class="price">R$ 200</p>
-          <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
-        </div>
+        <!-- (Outros cards podem ser adicionados conforme necessário) -->
       </div>
-    `;
-    // Função para exibir conteúdo no container (exibe os VIPs por padrão)
-    function mostrarConteudo(categoria) {
-      const conteudoDiv = document.getElementById('conteudo');
-      conteudoDiv.classList.remove('show');
-      setTimeout(() => {
-        if (categoria === 'Planos VIP') {
-          conteudoDiv.innerHTML = vipHTML;
-        } else {
-          conteudoDiv.innerHTML = `<h1>Ops...</h1><p class='indisponivel'>Esta categoria está indisponível no momento.</p>`;
-        }
-        conteudoDiv.classList.add('show');
-      }, 400);
-    }
-    // Exibe os VIPs por padrão assim que o site carrega
-    window.addEventListener('load', () => {
-      mostrarConteudo('Planos VIP');
-      // Exibe o modal de cupom
-      document.getElementById('modalOverlay').classList.add('show');
-    });
-    // Função para fechar o modal
+    </div>
+  </div>
+
+  <script>
     function fecharModal() {
       document.getElementById('modalOverlay').classList.remove('show');
+    }
+    window.addEventListener('load', function() {
+      document.getElementById('modalOverlay').classList.add('show');
+    });
+    function mostrarConteudo(categoria) {
+      const conteudoDiv = document.getElementById('conteudo');
+      if (categoria === 'Planos VIP') {
+        conteudoDiv.innerHTML = `
+          <h1>Planos VIP</h1>
+          <p class="subtitle">Selecione seu VIP e clique em “Assinar agora” para prosseguir</p>
+          <div class="cards-container">
+            <div class="card">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="GaragemVip">
+              <h2>GaragemVip</h2>
+              <p class="price">R$ 50</p>
+              <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
+            </div>
+            <div class="card">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="Inicial">
+              <h2>Inicial</h2>
+              <p class="price">R$ 40</p>
+              <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
+            </div>
+            <div class="card">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipNatal">
+              <h2>VipNatal</h2>
+              <p class="price">R$ 70</p>
+              <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
+            </div>
+            <div class="card">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipWipe">
+              <h2>VipWipe</h2>
+              <p class="price">R$ 45</p>
+              <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
+            </div>
+          </div>
+        `;
+      } else {
+        conteudoDiv.innerHTML = `
+          <h1>Ops...</h1>
+          <p class="indisponivel">Esta categoria está indisponível no momento.</p>
+        `;
+      }
     }
   </script>
 </body>

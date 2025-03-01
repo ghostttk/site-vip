@@ -176,7 +176,7 @@
   <div id="modalOverlay" class="modal-overlay">
     <div class="modal">
       <h2>Aviso!</h2>
-      <p>Utilize o cupom <strong>SANTA10</strong> e ganhe 10% OFF</p>
+      <p>Utilize o cupom <strong>SANTA15</strong> e ganhe 15% OFF</p>
       <button onclick="fecharModal()">Fechar</button>
     </div>
   </div>
@@ -185,6 +185,8 @@
   <div class="sidebar">
     <h2>Categorias</h2>
     <ul>
+      <!-- "Planos VIP" movido para o topo -->
+      <li onclick="mostrarConteudo('Planos VIP')">Planos VIP</li>
       <li onclick="mostrarConteudo('Essenciais')">Essenciais</li>
       <li onclick="mostrarConteudo('Diamantes')">Diamantes</li>
       <li onclick="mostrarConteudo('Salários')">Salários</li>
@@ -192,7 +194,6 @@
       <li onclick="mostrarConteudo('Veículos')">Veículos</li>
       <li onclick="mostrarConteudo('Blindados & Tiros')">Blindados & Tiros</li>
       <li onclick="mostrarConteudo('Aeronaves')">Aeronaves</li>
-      <li onclick="mostrarConteudo('Planos VIP')">Planos VIP</li>
     </ul>
   </div>
 
@@ -322,7 +323,7 @@
     function mostrarConteudo(categoria) {
       const conteudoDiv = document.getElementById('conteudo');
       if (categoria === 'Planos VIP') {
-        // Exibe os VIPs (já estão carregados por padrão)
+        // Mantém os VIPs exibidos (já carregados por padrão)
       } else {
         conteudoDiv.innerHTML = `
           <h1>Ops...</h1>

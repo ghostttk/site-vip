@@ -11,11 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
     /* RESET BÁSICO */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #001f3f, #003366);
@@ -24,159 +20,67 @@
       display: flex;
       position: relative;
     }
-    /* SIDEBAR (barra lateral) */
+    /* SIDEBAR */
     .sidebar {
       width: 250px;
       background: #001a33;
       padding: 20px;
       box-shadow: 2px 0 5px rgba(0,0,0,0.3);
     }
-    .sidebar h2 {
-      font-size: 1.3rem;
-      margin-bottom: 15px;
-      font-weight: 600;
-      color: #0074D9;
-    }
-    .sidebar ul {
-      list-style: none;
-    }
+    .sidebar h2 { font-size: 1.3rem; margin-bottom: 15px; font-weight: 600; color: #0074D9; }
+    .sidebar ul { list-style: none; }
     .sidebar ul li {
-      margin: 10px 0;
-      font-size: 1rem;
-      color: #ccc;
-      cursor: pointer;
-      transition: color 0.3s;
+      margin: 10px 0; font-size: 1rem; color: #ccc; cursor: pointer; transition: color 0.3s;
     }
-    .sidebar ul li:hover {
-      color: #fff;
-    }
+    .sidebar ul li:hover { color: #fff; }
     /* CONTEÚDO PRINCIPAL */
     .main-content {
-      flex: 1;
-      padding: 20px;
-      overflow-y: auto;
-      position: relative;
-      text-align: center;
+      flex: 1; padding: 20px; overflow-y: auto; position: relative; text-align: center;
     }
-    .main-content h1 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-      color: #0074D9;
-      font-weight: 600;
-    }
-    .main-content p.subtitle {
-      color: #ccc;
-      margin-bottom: 20px;
-    }
+    .main-content h1 { font-size: 2rem; margin-bottom: 10px; color: #0074D9; font-weight: 600; }
+    .main-content p.subtitle { color: #ccc; margin-bottom: 20px; }
     /* IMAGEM DE BOAS-VINDAS */
     .welcome-image {
-      width: 100%;
-      max-width: 600px;
-      margin: 0 auto 20px;
-      display: block;
+      width: 100%; max-width: 600px; margin: 0 auto 20px; display: block;
     }
     /* GRID DE CARDS */
     .cards-container {
-      display: grid;
-      gap: 20px;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
     /* CARD VIP */
     .card {
-      background: #002b44;
-      border-radius: 8px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      transition: transform 0.3s;
+      background: #002b44; border-radius: 8px; padding: 20px; text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: transform 0.3s;
     }
-    .card:hover {
-      transform: translateY(-5px);
-    }
-    .card img {
-      width: 70px;
-      height: 70px;
-      object-fit: contain;
-      margin-bottom: 15px;
-    }
-    .card h2 {
-      font-size: 1.1rem;
-      margin-bottom: 10px;
-      font-weight: 600;
-    }
-    .card p.price {
-      font-size: 1rem;
-      margin-bottom: 15px;
-      color: #0074D9;
-      font-weight: bold;
-    }
+    .card:hover { transform: translateY(-5px); }
+    .card img { width: 70px; height: 70px; object-fit: contain; margin-bottom: 15px; }
+    .card h2 { font-size: 1.1rem; margin-bottom: 10px; font-weight: 600; }
+    .card p.price { font-size: 1rem; margin-bottom: 15px; color: #0074D9; font-weight: bold; }
     .card button {
-      background: #0074D9;
-      border: none;
-      border-radius: 4px;
-      color: #fff;
-      cursor: pointer;
-      font-size: 1rem;
-      padding: 10px 15px;
-      transition: background 0.3s;
+      background: #0074D9; border: none; border-radius: 4px; color: #fff;
+      cursor: pointer; font-size: 1rem; padding: 10px 15px; transition: background 0.3s;
     }
-    .card button:hover {
-      background: #3399FF;
-    }
+    .card button:hover { background: #3399FF; }
     /* MODAL POP-UP */
     .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center;
+      z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease;
     }
-    .modal-overlay.show {
-      opacity: 1;
-      visibility: visible;
-    }
+    .modal-overlay.show { opacity: 1; visibility: visible; }
     .modal {
-      background: #002b44;
-      padding: 30px;
-      border-radius: 8px;
-      text-align: center;
-      max-width: 300px;
-      width: 90%;
+      background: #002b44; padding: 30px; border-radius: 8px; text-align: center;
+      max-width: 300px; width: 90%;
     }
-    .modal h2 {
-      margin-bottom: 20px;
-      color: #0074D9;
-    }
-    .modal p {
-      margin-bottom: 20px;
-      font-size: 1rem;
-    }
+    .modal h2 { margin-bottom: 20px; color: #0074D9; }
+    .modal p { margin-bottom: 20px; font-size: 1rem; }
     .modal button {
-      background: #0074D9;
-      border: none;
-      border-radius: 4px;
-      color: #fff;
-      padding: 10px 20px;
-      cursor: pointer;
-      transition: background 0.3s;
+      background: #0074D9; border: none; border-radius: 4px; color: #fff;
+      padding: 10px 20px; cursor: pointer; transition: background 0.3s;
     }
-    .modal button:hover {
-      background: #3399FF;
-    }
+    .modal button:hover { background: #3399FF; }
     /* RESPONSIVIDADE */
-    @media (max-width: 768px) {
-      .sidebar {
-        display: none;
-      }
-    }
+    @media (max-width: 768px) { .sidebar { display: none; } }
   </style>
 </head>
 <body>
@@ -205,4 +109,119 @@
   <!-- Conteúdo Principal -->
   <div class="main-content">
     <div id="conteudo">
-      <h1>Planos VIP</h1><p class="subtitle">Selecione seu VIP e clique em “Assinar agora” para prosseguir</p><img class="welcome-image" src="https://raw.githubusercontent.com/ghostttk/site-vip/refs/heads/main/BEM-VINDO%20A%20LOJA%20VIP%20(1).png" alt="Bem-vindo à Loja VIP"><div class="cards-container"><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="GaragemVip"><h2>GaragemVip</h2><p class="price">R$ 50</p><button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button></div><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="Inicial"><h2>Inicial</h2><p class="price">R$ 40</p><button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button></div><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipNatal"><h2>VipNatal</h2><p class="price">R$ 70</p><button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button></div><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipWipe"><h2>VipWipe</h2><p class="price">R$ 45</p><button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button></div><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipBronze"><h2>VipBronze</h2><p class="price">R$ 60</p><button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button></div><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipPrata"><h2>VipPrata</h2><p class="price">R$ 70</p><button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button></div><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipOuro"><h2>VipOuro</h2><p class="price">R$ 80</p><button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button></div><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipPlatina"><h2>VipPlatina</h2><p class="price">R$ 90</p><button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button></div><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipDiamante"><h2>VipDiamante</h2><p class="price">R$ 100</p><button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button></div><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipBlack"><h2>VipBlack</h2><p class="price">R$ 120</p><button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button></div><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipSupremoBlack"><h2>VipSupremoBlack</h2><p class="price">R$ 130</p><button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button></div><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipMonster"><h2>VipMonster</h2><p class="price">R$ 140</p><button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button></div><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipGod"><h2>VipGod</h2><p class="price">R$ 150</p><button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button></div><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipRubi"><h2>VipRubi</h2><p class="price">R$ 160</p><button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button></div><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipEsmeralda"><h2>VipEsmeralda</h2><p class="price">R$ 200</p><button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button></div>';\n      } else {\n        conteudoDiv.innerHTML = '<h1>Ops...</h1><p class=\"indisponivel\">Esta categoria está indisponível no momento.</p>';\n      }\n    }\n  </script>\n</body>\n</html>\n"
+      <h1>Planos VIP</h1>
+      <p class="subtitle">Selecione seu VIP e clique em “Assinar agora” para prosseguir</p>
+      <img class="welcome-image" src="https://raw.githubusercontent.com/ghostttk/site-vip/refs/heads/main/BEM-VINDO%20A%20LOJA%20VIP%20(1).png" alt="Bem-vindo à Loja VIP">
+      <div class="cards-container">
+        <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="GaragemVip">
+          <h2>GaragemVip</h2>
+          <p class="price">R$ 50</p>
+          <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
+        </div>
+        <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="Inicial">
+          <h2>Inicial</h2>
+          <p class="price">R$ 40</p>
+          <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
+        </div>
+        <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipNatal">
+          <h2>VipNatal</h2>
+          <p class="price">R$ 70</p>
+          <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
+        </div>
+        <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipWipe">
+          <h2>VipWipe</h2>
+          <p class="price">R$ 45</p>
+          <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
+        </div>
+        <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipBronze">
+          <h2>VipBronze</h2>
+          <p class="price">R$ 60</p>
+          <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
+        </div>
+        <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipPrata">
+          <h2>VipPrata</h2>
+          <p class="price">R$ 70</p>
+          <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
+        </div>
+        <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipOuro">
+          <h2>VipOuro</h2>
+          <p class="price">R$ 80</p>
+          <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
+        </div>
+        <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipPlatina">
+          <h2>VipPlatina</h2>
+          <p class="price">R$ 90</p>
+          <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
+        </div>
+        <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipDiamante">
+          <h2>VipDiamante</h2>
+          <p class="price">R$ 100</p>
+          <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
+        </div>
+        <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipBlack">
+          <h2>VipBlack</h2>
+          <p class="price">R$ 120</p>
+          <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
+        </div>
+        <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipSupremoBlack">
+          <h2>VipSupremoBlack</h2>
+          <p class="price">R$ 130</p>
+          <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
+        </div>
+        <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipMonster">
+          <h2>VipMonster</h2>
+          <p class="price">R$ 140</p>
+          <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
+        </div>
+        <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipGod">
+          <h2>VipGod</h2>
+          <p class="price">R$ 150</p>
+          <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
+        </div>
+        <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipRubi">
+          <h2>VipRubi</h2>
+          <p class="price">R$ 160</p>
+          <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
+        </div>
+        <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipEsmeralda">
+          <h2>VipEsmeralda</h2>
+          <p class="price">R$ 200</p>
+          <button onclick="window.location.href='https://pagar-vip.vercel.app'">Assinar agora</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    function fecharModal() {
+      document.getElementById('modalOverlay').classList.remove('show');
+    }
+    window.addEventListener('load', function() {
+      document.getElementById('modalOverlay').classList.add('show');
+    });
+    function mostrarConteudo(categoria) {
+      const conteudoDiv = document.getElementById('conteudo');
+      if (categoria === 'Planos VIP') {
+        conteudoDiv.innerHTML = '<h1>Planos VIP</h1><p class="subtitle">Selecione seu VIP e clique em “Assinar agora” para prosseguir</p><img class="welcome-image" src="https://raw.githubusercontent.com/ghostttk/site-vip/refs/heads/main/BEM-VINDO%20A%20LOJA%20VIP%20(1).png" alt="Bem-vindo à Loja VIP"><div class="cards-container"><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="GaragemVip"><h2>GaragemVip</h2><p class="price">R$ 50</p><button onclick="window.location.href=\'https://pagar-vip.vercel.app\'">Assinar agora</button></div><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="Inicial"><h2>Inicial</h2><p class="price">R$ 40</p><button onclick="window.location.href=\'https://pagar-vip.vercel.app\'">Assinar agora</button></div><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipNatal"><h2>VipNatal</h2><p class="price">R$ 70</p><button onclick="window.location.href=\'https://pagar-vip.vercel.app\'">Assinar agora</button></div><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipWipe"><h2>VipWipe</h2><p class="price">R$ 45</p><button onclick="window.location.href=\'https://pagar-vip.vercel.app\'">Assinar agora</button></div><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipBronze"><h2>VipBronze</h2><p class="price">R$ 60</p><button onclick="window.location.href=\'https://pagar-vip.vercel.app\'">Assinar agora</button></div><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipPrata"><h2>VipPrata</h2><p class="price">R$ 70</p><button onclick="window.location.href=\'https://pagar-vip.vercel.app\'">Assinar agora</button></div><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipOuro"><h2>VipOuro</h2><p class="price">R$ 80</p><button onclick="window.location.href=\'https://pagar-vip.vercel.app\'">Assinar agora</button></div><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipPlatina"><h2>VipPlatina</h2><p class="price">R$ 90</p><button onclick="window.location.href=\'https://pagar-vip.vercel.app\'">Assinar agora</button></div><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipDiamante"><h2>VipDiamante</h2><p class="price">R$ 100</p><button onclick="window.location.href=\'https://pagar-vip.vercel.app\'">Assinar agora</button></div><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipBlack"><h2>VipBlack</h2><p class="price">R$ 120</p><button onclick="window.location.href=\'https://pagar-vip.vercel.app\'">Assinar agora</button></div><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipSupremoBlack"><h2>VipSupremoBlack</h2><p class="price">R$ 130</p><button onclick="window.location.href=\'https://pagar-vip.vercel.app\'">Assinar agora</button></div><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipMonster"><h2>VipMonster</h2><p class="price">R$ 140</p><button onclick="window.location.href=\'https://pagar-vip.vercel.app\'">Assinar agora</button></div><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipGod"><h2>VipGod</h2><p class="price">R$ 150</p><button onclick="window.location.href=\'https://pagar-vip.vercel.app\'">Assinar agora</button></div><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipRubi"><h2>VipRubi</h2><p class="price">R$ 160</p><button onclick="window.location.href=\'https://pagar-vip.vercel.app\'">Assinar agora</button></div><div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gold_medal_icon.svg/80px-Gold_medal_icon.svg.png" alt="VipEsmeralda"><h2>VipEsmeralda</h2><p class="price">R$ 200</p><button onclick="window.location.href=\'https://pagar-vip.vercel.app\'">Assinar agora</button></div>'; 
+      } else { 
+        conteudoDiv.innerHTML = '<h1>Ops...</h1><p class="indisponivel">Esta categoria está indisponível no momento.</p>'; 
+      } 
+    }
+  </script>
+</body>
+</html>
